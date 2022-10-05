@@ -1,10 +1,41 @@
+import Cookies from "js-cookie";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import jwt_decode from "jwt-decode";
+import { JWTPayloadTypes, UserTypes } from "../../../services/data-types";
+import { useRouter } from "next/router";
 
-interface AuthProps {
-  isLogin?: boolean;
-}
-export default function NavbarAuth(props: Partial<AuthProps>) {
-  const { isLogin } = props;
+export default function NavbarAuth() {
+  const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState({
+    avatar: "",
+    email: "",
+    id: "",
+    phoneNumber: "",
+    username: "",
+  });
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      const jwtToken = atob(token!);
+      const payload: JWTPayloadTypes = jwt_decode(jwtToken);
+      const userPayload: UserTypes = payload.player;
+      const IMG = process.env.NEXT_PUBLIC_IMAGE;
+      userPayload.avatar = `${IMG}/${userPayload.avatar}`;
+      setUser(userPayload)
+      setIsLogin(true);
+    }
+  }, []);
+
+  const onLogout = () => {
+    Cookies.remove('token');
+    setIsLogin(false);
+    router.push('/');
+  }
+
   if (isLogin) {
     return (
       <li className="nav-item my-auto dropdown d-flex">
@@ -19,7 +50,7 @@ export default function NavbarAuth(props: Partial<AuthProps>) {
             aria-expanded="false"
           >
             <img
-              src="/img/avatar-1.png"
+              src={user.avatar}
               className="rounded-circle"
               width="40"
               height="40"
@@ -50,10 +81,8 @@ export default function NavbarAuth(props: Partial<AuthProps>) {
                 </a>
               </Link>
             </li>
-            <li>
-              <Link href="/sign-in">
-                <a className="dropdown-item text-lg color-palette-2">Log Out</a>
-              </Link>
+            <li onClick={onLogout}>
+                <button className="dropdown-item text-lg color-palette-2">Log Out</button>
             </li>
           </ul>
         </div>

@@ -19,7 +19,7 @@ function Navbar() {
               <MenuNavbar title="Rewards" />
               <MenuNavbar title="Discover" />
               <MenuNavbar title="Global Rank" />
-              <NavbarAuth isLogin />
+              <NavbarAuth />
             </ul>
           </div>
         </div>

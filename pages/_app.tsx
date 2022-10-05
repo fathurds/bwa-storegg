@@ -16,6 +16,7 @@ import "../styles/edit-profile.css";
 import "../styles/navbar-log-in.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
