@@ -1,16 +1,15 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { setSignUp } from "../services/auth";
 import { getGameCategory } from "../services/player";
-import { ToastContainer, toast } from "react-toastify";
-import { useRouter } from "next/router";
-import { CategoryTypes, LocalFormTypes } from "../services/data-types";
+import { toast } from "react-toastify";
+import { CategoryTypes } from "../services/data-types";
 
 export default function SignUpPhoto() {
   const [categories, setCategories] = useState([]);
   const [favorite, setFavorite] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState<File | string>("");
   const [imagePreview, setImagePreview] = useState("/icon/upload.svg");
   const [localForm, setLocalForm] = useState({
     name: "",
@@ -137,7 +136,6 @@ export default function SignUpPhoto() {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </section>
   );
 }

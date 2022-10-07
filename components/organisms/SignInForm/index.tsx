@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { setLogin } from "../../../services/auth";
 import Cookies from "js-cookie";
 
@@ -36,7 +36,6 @@ export default function SignInForm() {
 
   return (
     <form action="">
-      <ToastContainer />
       <div className="container mx-auto">
         <div className="pb-50">
           <Link href="/">
