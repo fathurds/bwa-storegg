@@ -25,16 +25,16 @@ export default function NavbarAuth() {
       const userPayload: UserTypes = payload.player;
       const IMG = process.env.NEXT_PUBLIC_IMAGE;
       userPayload.avatar = `${IMG}/${userPayload.avatar}`;
-      setUser(userPayload)
+      setUser(userPayload);
       setIsLogin(true);
     }
   }, []);
 
   const onLogout = () => {
-    Cookies.remove('token');
+    Cookies.remove("token");
     setIsLogin(false);
-    router.push('/');
-  }
+    router.push("/");
+  };
 
   if (isLogin) {
     return (
@@ -51,6 +51,9 @@ export default function NavbarAuth() {
           >
             <img
               src={user.avatar}
+              onError={(e) => {
+                e.currentTarget.src = "/img/avatar.png";
+              }}
               className="rounded-circle"
               width="40"
               height="40"
@@ -82,7 +85,9 @@ export default function NavbarAuth() {
               </Link>
             </li>
             <li onClick={onLogout}>
-                <button className="dropdown-item text-lg color-palette-2">Log Out</button>
+              <button className="dropdown-item text-lg color-palette-2">
+                Log Out
+              </button>
             </li>
           </ul>
         </div>

@@ -3,10 +3,15 @@ import Cookies from "js-cookie";
 
 interface CallAPIProps extends AxiosRequestConfig {
     token?: boolean;
+    serverToken?: string;
 }
-export default async function callAPI({url, method, data, token}: CallAPIProps) {
+export default async function callAPI({url, method, data, token, serverToken}: CallAPIProps) {
     let headers = {};
-    if (token) {
+    if (serverToken) { // dari server
+        headers = {
+            Authorization: `Bearer ${serverToken}`
+        }
+    } else if (token) { // dari client
         const tokenCookies = Cookies.get("token");
         if (tokenCookies) {
             const jwtToken = atob(tokenCookies);
@@ -31,10 +36,12 @@ export default async function callAPI({url, method, data, token}: CallAPIProps) 
         }
         return res;
     }
+
+    const { length } = Object.keys(response.data);
     const res = {
         error: false,
         message: 'success',
-        data: response.data.data
+        data: length > 1 ? response.data : response.data.data
     }
     return res;
 }

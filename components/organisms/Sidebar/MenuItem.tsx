@@ -14,9 +14,10 @@ interface MenuItemProps {
     | "ic-menu-logout";
   active?: boolean;
   href?: string;
+  onClick?: () => void;
 }
 export default function MenuItem(props: Partial<MenuItemProps>) {
-  const { title, icon, active, href } = props;
+  const { title, icon, active, href, onClick } = props;
   const classItem = classNames({
     item: true,
     "mb-30": true,
@@ -24,14 +25,18 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
   });
 
   return (
-    <div className={classItem}>
+    <div className={classItem} onClick={onClick}>
       <div className="me-3">
         <Image src={`/icon/${icon}.svg`} height={25} width={25} />
       </div>
       <p className="item-title m-0">
-        <Link href={href || "#"}>
+        {onClick ? (
           <a className="text-lg text-decoration-none">{title}</a>
-        </Link>
+        ) : (
+          <Link href={href || "#"}>
+            <a className="text-lg text-decoration-none">{title}</a>
+          </Link>
+        )}
       </p>
     </div>
   );

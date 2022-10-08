@@ -19,10 +19,6 @@ export const getFeaturedGame = async () => {
 }
 
 export const getDetailVoucher = async (id: string) => {
-    // const URL = `players/${id}/detail`
-    // const response = await axios.get(`${ROOT_API}/${API_VERSION}/${URL}`);
-    // const axiosResponse = response.data;
-    // return axiosResponse.data;
 
     const url = `${ROOT_API}/${API_VERSION}/players/${id}/detail`;
 
@@ -33,10 +29,6 @@ export const getDetailVoucher = async (id: string) => {
 }
 
 export const getGameCategory = async () => {
-    // const URL = 'players/category';
-    // const response = await axios.get(`${ROOT_API}/${API_VERSION}/${URL}`);
-    // const axiosResponse = response.data;
-    // return axiosResponse.data;
 
     const url = `${ROOT_API}/${API_VERSION}/players/category`;
 
