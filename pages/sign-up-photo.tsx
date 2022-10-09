@@ -78,7 +78,7 @@ export default function SignUpPhoto() {
                     name="avatar"
                     accept="image/png, image/jpeg"
                     onChange={(e) => {
-                      const img = e.target.files[0];
+                      const img = e.target.files![0];
                       setImagePreview(URL.createObjectURL(img));
                       setImage(img);
                     }}

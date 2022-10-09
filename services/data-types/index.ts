@@ -51,6 +51,7 @@ export interface UserTypes {
     avatar: string;
     phoneNumber: string;
     username: string;
+    name: string;
 }
 
 export interface JWTPayloadTypes {

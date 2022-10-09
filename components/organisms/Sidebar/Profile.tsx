@@ -10,6 +10,7 @@ function Profile() {
     id: "",
     phoneNumber: "",
     username: "",
+    name: "",
   });
   useEffect(() => {
     const token = Cookies.get("token");
@@ -32,10 +33,10 @@ function Profile() {
         }}
         width="90"
         height="90"
-        className="img-fluid mb-20"
+        className="mb-20"
         style={{ borderRadius: "100%" }}
       />
-      <h2 className="fw-bold text-xl color-palette-1 m-0">{user.username}</h2>
+      <h2 className="fw-bold text-xl color-palette-1 m-0">{user.name}</h2>
       <p className="color-palette-2 m-0">{user.email}</p>
     </div>
   );
