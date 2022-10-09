@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Sidebar from "../../../components/organisms/Sidebar";
 import TransactionDetailContent from "../../../components/organisms/TransactionDetailContent";
 import { HistoryTransactionTypes } from "../../../services/data-types";
@@ -11,6 +12,9 @@ export default function TransactionDetail(props: TransactionDetailProps) {
 
   return (
     <section className="transactions-detail overflow-auto">
+      <Head>
+        <title>Transaction - StoreGG</title>
+      </Head>
       <Sidebar activeMenu="transactions" />
       <TransactionDetailContent data={transactionDetail} />
     </section>

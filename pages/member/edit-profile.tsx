@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -8,15 +9,23 @@ import Sidebar from "../../components/organisms/Sidebar";
 import { JWTPayloadTypes, UserTypes } from "../../services/data-types";
 import { updateProfile } from "../../services/member";
 
+interface UserStateTypes {
+  name: string;
+  email: string;
+  username: string;
+  phoneNumber: string;
+  avatar: any;
+}
+
 export default function EditProfile() {
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<UserStateTypes>({
     username: "",
     name: "",
     email: "",
     phoneNumber: "",
     avatar: "",
   });
-  const [imagePreview, setImagePreview] = useState<any>(null);
+  const [imagePreview, setImagePreview] = useState("/");
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -51,6 +60,9 @@ export default function EditProfile() {
 
   return (
     <section className="edit-profile overflow-auto">
+      <Head>
+        <title>Profile - StoreGG</title>
+      </Head>
       <Sidebar activeMenu="settings" />
       <main className="main-wrapper">
         <div className="ps-lg-0">
@@ -60,9 +72,9 @@ export default function EditProfile() {
               <div className="photo d-flex">
                 <div className="image-upload">
                   <label htmlFor="avatar">
-                    {imagePreview ? (
+                    {imagePreview === "/" ? (
                       <img
-                        src={imagePreview}
+                        src={user.avatar}
                         width={90}
                         height={90}
                         style={{ borderRadius: "100%" }}
@@ -72,7 +84,7 @@ export default function EditProfile() {
                       />
                     ) : (
                       <img
-                        src={user.avatar}
+                        src={imagePreview}
                         width={90}
                         height={90}
                         style={{ borderRadius: "100%" }}

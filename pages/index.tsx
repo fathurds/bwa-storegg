@@ -7,6 +7,7 @@ import FeaturedGame from "../components/organisms/FeaturedGame";
 import Reached from "../components/organisms/Reached";
 import Story from "../components/organisms/Story";
 import Footer from "../components/organisms/Footer";
+import Head from "next/head";
 
 export default function Home() {
   useEffect(() => {
@@ -14,6 +15,24 @@ export default function Home() {
   }, []);
   return (
     <>
+      <Head>
+        <title>StoreGG - Get a New Experience in Gaming</title>
+        <meta
+          name="description"
+          content="Kami menyediakan jutaan cara untuk membantu players menjadi pemenang sejati"
+        />
+        <meta
+          property="og:title"
+          content="StoreGG - Get a New Experience in Gaming"
+        />
+        <meta
+          property="og:description"
+          content="Kami menyediakan jutaan cara untuk membantu players menjadi pemenang sejati"
+        />
+        <meta property="og:image" content="" />
+        <meta property="og:url" content="" />
+      </Head>
+
       <Navbar />
 
       <MainBanner />

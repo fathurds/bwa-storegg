@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import Head from "next/head";
+import { useEffect } from "react";
 import Footer from "../../components/organisms/Footer";
 import Navbar from "../../components/organisms/Navbar";
 import TopUpForm from "../../components/organisms/TopUpForm";
@@ -22,6 +22,9 @@ export default function Detail({ dataItem, nominals, payments }: DetailProps) {
   }, []);
   return (
     <>
+      <Head>
+        <title>{dataItem.name} - StoreGG</title>
+      </Head>
       <Navbar />
       <section className="detail pt-lg-60 pb-50">
         <div className="container-xxl container-fluid">

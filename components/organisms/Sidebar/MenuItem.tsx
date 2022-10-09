@@ -33,7 +33,7 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
         {onClick ? (
           <a className="text-lg text-decoration-none">{title}</a>
         ) : (
-          <Link href={href || "#"}>
+          <Link href={href || "/"}>
             <a className="text-lg text-decoration-none">{title}</a>
           </Link>
         )}

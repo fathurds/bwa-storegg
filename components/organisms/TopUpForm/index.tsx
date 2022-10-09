@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -36,7 +35,6 @@ export default function TopUpForm(props: TopUpFormProps) {
       bank,
     };
     setPaymentItem(data);
-    console.log(data);
   };
 
   const onSubmit = () => {

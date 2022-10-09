@@ -1,11 +1,13 @@
 import Sidebar from "../../../components/organisms/Sidebar";
 import TransactionContent from "../../../components/organisms/TransactionContent";
-import jwtDecode from "jwt-decode";
-import { JWTPayloadTypes, UserTypes } from "../../../services/data-types";
+import Head from "next/head";
 
 export default function Transactions() {
   return (
     <section className="transactions overflow-auto">
+      <Head>
+        <title>Transaction - StoreGG</title>
+      </Head>
       <Sidebar activeMenu="transactions" />
       <TransactionContent />
     </section>

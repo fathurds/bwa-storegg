@@ -1,8 +1,12 @@
+import Head from "next/head";
 import Image from "next/image";
 
 export default function Custom404() {
   return (
     <section className="not-found mx-auto pt-145 pb-md-212 pb-100">
+      <Head>
+        <title>404 - StoreGG</title>
+      </Head>
       <div className="container-fluid">
         <div className="text-center">
           <Image src="/icon/404.svg" width={483} height={300} />

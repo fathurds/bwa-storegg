@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { GameItemTypes } from "../../../services/data-types";
 import { getFeaturedGame } from "../../../services/player";

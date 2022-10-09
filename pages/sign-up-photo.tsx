@@ -5,11 +5,12 @@ import { setSignUp } from "../services/auth";
 import { getGameCategory } from "../services/player";
 import { toast } from "react-toastify";
 import { CategoryTypes } from "../services/data-types";
+import Head from "next/head";
 
 export default function SignUpPhoto() {
   const [categories, setCategories] = useState([]);
   const [favorite, setFavorite] = useState("");
-  const [image, setImage] = useState<File | string>("");
+  const [image, setImage] = useState<any>("");
   const [imagePreview, setImagePreview] = useState("/icon/upload.svg");
   const [localForm, setLocalForm] = useState({
     name: "",
@@ -58,6 +59,9 @@ export default function SignUpPhoto() {
 
   return (
     <section className="sign-up-photo mx-auto pt-lg-227 pb-lg-227 pt-130 pb-50">
+      <Head>
+        <title>Sign Up - StoreGG</title>
+      </Head>
       <div className="container mx-auto">
         <form action="">
           <div className="form-input d-md-block d-flex flex-column">
