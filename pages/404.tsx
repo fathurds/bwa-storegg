@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Custom404() {
   return (
@@ -22,13 +23,14 @@ export default function Custom404() {
           </p>
         </div>
         <div className="button-group d-flex flex-column mx-auto">
-          <a
-            className="btn btn-homepage fw-medium text-lg text-white rounded-pill"
-            href="#"
-            role="button"
-          >
-            Homepage
-          </a>
+          <Link href="/">
+            <a
+              className="btn btn-homepage fw-medium text-lg text-white rounded-pill"
+              role="button"
+            >
+              Homepage
+            </a>
+          </Link>
         </div>
       </div>
     </section>
